@@ -12,7 +12,7 @@ export function generateOpenApiDocument() {
   const document = generator.generateDocument({
     openapi: "3.1.0",
     info: {
-      title: "",
+      title: "Authentication Rest Api",
       version: "1.0.0",
     },
     servers: [
@@ -21,7 +21,12 @@ export function generateOpenApiDocument() {
         description: config.environment.value,
       },
     ],
-    tags: [],
+    tags: [
+      {
+        name: "Authentication",
+        description: "Authentication operations",
+      },
+    ],
   });
 
   return document;

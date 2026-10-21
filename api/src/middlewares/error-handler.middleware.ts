@@ -50,7 +50,7 @@ export const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   });
 
   return httpResponse.internalServer500(res, {
-    code: err.code,
-    message: err.message,
+    code: "INTERNAL_SERVER_ERROR",
+    message: "Internal server error",
   });
 };
