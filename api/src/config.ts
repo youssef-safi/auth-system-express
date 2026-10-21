@@ -2,41 +2,48 @@ import "dotenv/config";
 import z from "zod";
 
 const EnvSchema = z.object({
-  port: z.coerce.number().positive(),
-  url: z.url(),
-  api_prefix: z.string(),
-  node_environment: z.enum(["development", "staging", "production"]),
-  open_api_path: z.string(),
-  swagger_path: z.string(),
-  database_url: z.url(),
+  PORT: z.coerce.number().positive(),
+  URL: z.url(),
+  API_PREFIX: z.string(),
+  NODE_ENVIRONMENT: z.enum(["development", "staging", "production"]),
+  OPEN_API_PATH: z.string(),
+  SWAGGER_PATH: z.string(),
+  DATABASE_URL: z.url(),
+  BCRYPT_SALT: z.coerce.number(),
 });
 
 const env = EnvSchema.parse(process.env);
 
 export const config = {
   api: {
-    port: env.port,
-    url: env.url,
-    prefix: env.api_prefix,
-    openApiPath: env.open_api_path,
-    swaggerPath: env.swagger_path,
+    port: env.PORT,
+    url: env.URL,
+    prefix: env.API_PREFIX,
+    openApiPath: env.OPEN_API_PATH,
+    swaggerPath: env.SWAGGER_PATH,
   },
 
   environment: {
-    value: env.node_environment,
+    value: env.NODE_ENVIRONMENT,
     isDevelopment: () => {
-      return env.node_environment === "development";
+      return env.NODE_ENVIRONMENT === "development";
     },
     isStaging: () => {
-      return env.node_environment === "staging";
+      return env.NODE_ENVIRONMENT === "staging";
     },
     isProduction: () => {
-      return env.node_environment === "production";
+      return env.NODE_ENVIRONMENT === "production";
     },
   },
 
   database: {
-    url: env.database_url,
+    url: env.DATABASE_URL,
+  },
+
+  security: {
+    bcrypt: {
+      salt: env.BCRYPT_SALT,
+    },
   },
 };
 
