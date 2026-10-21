@@ -4,6 +4,8 @@ import { httpResponse } from "../http-response/http-response.js";
 import { generateOpenApiDocument } from "./openapi.js";
 import swaggerUi from "swagger-ui-express";
 
+import "#/modules/auth/auth.openapi.js";
+
 export function setupSwaggerAndOpenApi(app: Express) {
   const document = generateOpenApiDocument();
 

@@ -26,7 +26,9 @@
   },
   "homepage": "https://github.com/youssef-safi/auth-system-express#readme",
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
     "@types/node": "^26.6.5",
     "@types/pg": "^8.23.1",
     "@types/swagger-ui-express": "^4.1.8",
@@ -39,14 +41,17 @@
     "esbuild@0.28.2": true,
     "@scarf/scarf@1.4.0": true,
     "prisma@7.10.1": true,
-    "@prisma/engines@7.10.1": true
+    "@prisma/engines@7.10.1": true,
+    "bcrypt@6.0.0": true
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^9.1.0",
     "@prisma/adapter-pg": "^7.10.1",
     "@prisma/client": "^7.10.1",
+    "bcrypt": "^6.0.0",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
+    "express-session": "^1.19.0",
     "pg": "^8.23.1",
     "pino": "^10.4.0",
     "pino-http": "^11.0.0",
